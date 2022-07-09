@@ -353,6 +353,10 @@ QgsImageWarperTask::QgsImageWarperTask( const QString &input, const QString &out
 {
 }
 
+QgsImageWarperTask::~QgsImageWarperTask()
+{
+}
+
 void QgsImageWarperTask::cancel()
 {
   if ( mFeedback )

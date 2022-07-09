@@ -37,6 +37,7 @@
 #include "qgis_app.h"
 
 class QCloseEvent;
+class QToolButton;
 class QTreeWidgetItem;
 class QAction;
 class QMenu;

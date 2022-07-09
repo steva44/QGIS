@@ -149,6 +149,8 @@ class QgsImageWarperTask : public QgsTask
                         const QgsCoordinateReferenceSystem &crs,
                         double destResX = 0.0, double destResY = 0.0 );
 
+    ~QgsImageWarperTask();
+
     void cancel() override;
 
     /**
