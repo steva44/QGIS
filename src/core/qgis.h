@@ -784,6 +784,39 @@ class CORE_EXPORT Qgis
     Q_ENUM( SelectBehavior )
 
     /**
+     * Geometry relationship test to apply for selecting features.
+     *
+     * \since QGIS 3.28
+     */
+    enum class SelectGeometryRelationship : int
+    {
+      Intersect, //!< Select where features intersect the reference geometry
+      Within, //!< Select where features are within the reference geometry
+    };
+    Q_ENUM( SelectGeometryRelationship )
+
+    /**
+     * Flags which control feature selection behavior.
+     *
+     * \since QGIS 3.28
+     */
+    enum class SelectionFlag : int
+    {
+      SingleFeatureSelection = 1 << 0, //!< Select only a single feature, picking the "best" match for the selection geometry
+      ToggleSelection = 1 << 1, //!< Enables a "toggle" selection mode, where previously selected matching features will be deselected and previously deselected features will be selected. This flag works only when the SingleFeatureSelection flag is also set.
+    };
+
+    /**
+     * Flags which control feature selection behavior.
+     *
+     * \since QGIS 3.28
+     */
+    Q_DECLARE_FLAGS( SelectionFlags, SelectionFlag )
+
+    Q_ENUM( SelectionFlag )
+    Q_FLAG( SelectionFlags )
+
+    /**
      * Specifies the result of a vector layer edit operation
      *
      * \since QGIS 3.22
@@ -1981,6 +2014,23 @@ class CORE_EXPORT Qgis
     Q_FLAG( ProjectReadFlags )
 
     /**
+     * Available MapBox GL style source types.
+     *
+     * \since QGIS 3.28
+     */
+    enum class MapBoxGlStyleSourceType : int
+    {
+      Vector, //!< Vector source
+      Raster, //!< Raster source
+      RasterDem, //!< Raster DEM source
+      GeoJson, //!< GeoJSON source
+      Image, //!< Image source
+      Video, //!< Video source
+      Unknown, //!< Other/unknown source type
+    };
+    Q_ENUM( MapBoxGlStyleSourceType )
+
+    /**
      * Identify search radius in mm
      * \since QGIS 2.3
      */
@@ -2123,6 +2173,7 @@ Q_DECLARE_OPERATORS_FOR_FLAGS( Qgis::ProfileGeneratorFlags )
 Q_DECLARE_OPERATORS_FOR_FLAGS( Qgis::ProjectReadFlags )
 Q_DECLARE_OPERATORS_FOR_FLAGS( Qgis::CoordinateTransformationFlags )
 Q_DECLARE_OPERATORS_FOR_FLAGS( Qgis::RasterTemporalCapabilityFlags )
+Q_DECLARE_OPERATORS_FOR_FLAGS( Qgis::SelectionFlags )
 
 
 // hack to workaround warnings when casting void pointers
